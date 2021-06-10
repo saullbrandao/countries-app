@@ -17,7 +17,7 @@ export const RegionFilter = () => {
         <>
           <div>
             <Menu.Button className="inline-flex justify-between w-1/2 mx-4 rounded-md shadow-md p-4 bg-white text-light-text hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-light-text">
-              Filter
+              {filter || 'Filter'}
               <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
             </Menu.Button>
           </div>
@@ -31,16 +31,17 @@ export const RegionFilter = () => {
             leave="transition ease-in duration-75"
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
+
           >
             <Menu.Items
               static
-              className="origin-top-right absolute mx-4 mt-2 w-1/2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              className="origin-top-right absolute mx-4 mt-2 w-1/2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
             >
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => handleFilter('africa')}
+                      onClick={() => handleFilter('Africa')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
                       )}
@@ -52,7 +53,7 @@ export const RegionFilter = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => handleFilter('america')}
+                      onClick={() => handleFilter('America')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
                       )}
@@ -64,7 +65,7 @@ export const RegionFilter = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => handleFilter('asia')}
+                      onClick={() => handleFilter('Asia')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
                       )}
@@ -76,12 +77,24 @@ export const RegionFilter = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => handleFilter('europe')}
+                      onClick={() => handleFilter('Europe')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
                       )}
                     >
                       Europe
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
+                      onClick={() => handleFilter('Oceania')}
+                      className={classNames(
+                        'block px-4 py-2 text-sm'
+                      )}
+                    >
+                      Oceania
                     </button>
                   )}
                 </Menu.Item>
