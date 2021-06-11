@@ -19,13 +19,11 @@ export default function Home() {
       <div className="flex flex-col gap-8">
         <input className='rounded-md shadow-md p-4 mx-4 mb-4 text-light-input outline-none focus:ring-2 focus:ring-light-text' placeholder='Search for a country...' />
         <RegionFilter />
-        {
-          isFetched &&
-          <div className='overflow-auto max-h-screen'>
-            <ReactList
-              length={data.length}
-              itemRenderer={(index, key) => <CountryCard key={key} countryData={data[index]} />}
-            /> </div>
+        {isFetched &&
+          <ReactList
+            length={data.length}
+            itemRenderer={(index, key) => <CountryCard key={key} countryData={data[index]} />}
+          />
         }
       </div>
     </div>
