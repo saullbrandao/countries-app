@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import axios from "axios";
 import { useQuery } from "react-query";
 import ReactList from 'react-list'
+import { SearchIcon } from "@heroicons/react/outline";
 
 const getCountries = async () => {
   const response = await axios.get('https://restcountries.eu/rest/v2/all')
@@ -17,7 +18,15 @@ export default function Home() {
     <div className='min-h-screen  bg-light-background dark:bg-dark-background'>
       <Header />
       <div className="flex flex-col gap-8">
-        <input className='rounded-md shadow-md p-4 mx-4 mb-4 text-light-input dark:bg-dark-elements dark:text-white outline-none focus:ring-1 focus:ring-light-text dark:focus:ring-white' placeholder='Search for a country...' />
+        <div className="flex items-center mx-4 mb-4 h-14 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
+          <div className="h-full flex justify-center items-center">
+            <SearchIcon stroke='white' className='h-6' />
+          </div>
+          <input
+            className='ml-4 pl-4 h-full text-light-input dark:text-white dark:bg-dark-elements outline-none'
+            placeholder='Search for a country...'
+          />
+        </div>
         <RegionFilter />
         {isFetched &&
           <ReactList
