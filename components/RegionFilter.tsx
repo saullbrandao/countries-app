@@ -12,11 +12,11 @@ export const RegionFilter = () => {
   const handleFilter = region => setFilter(region)
 
   return (
-    <Menu as="div" className="relative inline-block text-left text-light-text">
+    <Menu as="div" className="relative inline-block text-left text-light-text dark:">
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className="inline-flex justify-between w-1/2 mx-4 rounded-md shadow-md p-4 bg-white text-light-text hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-light-text">
+            <Menu.Button className="inline-flex justify-between w-1/2 mx-4 rounded-md shadow-md p-4 bg-white dark:bg-dark-elements text-light-text dark:text-white hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-light-text">
               {filter || 'Filter'}
               <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
             </Menu.Button>
@@ -35,7 +35,7 @@ export const RegionFilter = () => {
           >
             <Menu.Items
               static
-              className="origin-top-right absolute mx-4 mt-2 w-1/2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
+              className="origin-top-right absolute mx-4 mt-2 w-1/2 rounded-md shadow-lg bg-white dark:bg-dark-elements dark:text-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
             >
               <div className="py-1">
                 <Menu.Item>

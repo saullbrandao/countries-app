@@ -14,10 +14,10 @@ export default function Home() {
   const { data, isError, isFetched, isLoading, refetch } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
 
   return (
-    <div className='min-h-screen  bg-light-background'>
+    <div className='min-h-screen  bg-light-background dark:bg-dark-background'>
       <Header />
       <div className="flex flex-col gap-8">
-        <input className='rounded-md shadow-md p-4 mx-4 mb-4 text-light-input outline-none focus:ring-2 focus:ring-light-text' placeholder='Search for a country...' />
+        <input className='rounded-md shadow-md p-4 mx-4 mb-4 text-light-input dark:bg-dark-elements dark:text-white outline-none focus:ring-1 focus:ring-light-text dark:focus:ring-white' placeholder='Search for a country...' />
         <RegionFilter />
         {isFetched &&
           <ReactList
