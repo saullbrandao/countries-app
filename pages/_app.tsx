@@ -1,3 +1,4 @@
+import { Header } from '../components/Header'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { DarkModeContextProvider } from '../contexts/DarkModeContext'
 import '../styles/globals.css'
@@ -8,7 +9,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <DarkModeContextProvider>
-        <Component {...pageProps} />
+        <main className='bg-light-background dark:bg-dark-background'>
+          <Header />
+          <Component {...pageProps} />
+        </main>
       </DarkModeContextProvider>
     </QueryClientProvider>
   )

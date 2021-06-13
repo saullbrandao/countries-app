@@ -1,6 +1,5 @@
 import { CountryCard } from "../components/CountryCard";
 import { RegionFilter } from "../components/RegionFilter";
-import { Header } from "../components/Header";
 import axios from "axios";
 import { useQuery } from "react-query";
 import ReactList from 'react-list'
@@ -17,8 +16,7 @@ export default function Home() {
   const { data, isError, isFetched, isLoading, refetch } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
 
   return (
-    <div className='min-h-screen  bg-light-background dark:bg-dark-background'>
-      <Header />
+    <div className='min-h-screen'>
       <div className="flex flex-col gap-8">
         <div className="flex items-center mx-4 mb-4 h-14 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
           <div className="h-full flex justify-center items-center">
