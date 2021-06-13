@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { DarkModeContextProvider } from '../contexts/DarkModeContext'
 import '../styles/globals.css'
 
 const queryClient = new QueryClient()
@@ -6,7 +7,9 @@ const queryClient = new QueryClient()
 function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
+      <DarkModeContextProvider>
+        <Component {...pageProps} />
+      </DarkModeContextProvider>
     </QueryClientProvider>
   )
 }
