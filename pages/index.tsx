@@ -5,15 +5,16 @@ import { useQuery } from "react-query";
 import ReactList from 'react-list'
 import { SearchIcon } from "@heroicons/react/outline";
 import { useDarkMode } from "../contexts/DarkModeContext";
-
-const getCountries = async () => {
-  const response = await axios.get('https://restcountries.eu/rest/v2/all')
-  return response.data
-}
+import { useCountries } from "../contexts/CountriesContext";
+import { useEffect } from "react";
 
 export default function Home() {
   const { darkMode } = useDarkMode()
-  const { data, isError, isFetched, isLoading, refetch } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
+  const { countries, fetchCountries } = useCountries()
+
+  useEffect(() => {
+    fetchCountries()
+  }, [])
 
   return (
     <div className='min-h-screen'>
@@ -28,10 +29,10 @@ export default function Home() {
           />
         </div>
         <RegionFilter />
-        {isFetched &&
+        {countries &&
           <ReactList
-            length={data.length}
-            itemRenderer={(index, key) => <CountryCard key={key} countryData={data[index]} />}
+            length={countries.length}
+            itemRenderer={(index, key) => <CountryCard key={key} countryData={countries[index]} />}
           />
         }
       </div>
