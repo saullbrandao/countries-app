@@ -14,9 +14,19 @@ const getCountries = async () => {
 
 export default function Home() {
   const { darkMode } = useDarkMode()
-  const { data: countries, isError, isLoading } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
+  const { data: countries, isError } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
   const [filter, setFilter] = useState('')
 
+  const [displayedCountries, setDisplayedCountries] = useState([])
+
+  const handleRegionSelection = () => {
+    const filteredCountries = filter ? countries.filter(country => country.region.toLowerCase() === filter.toLowerCase()) : countries
+    setDisplayedCountries(filteredCountries)
+  }
+
+  useEffect(() => {
+    countries && handleRegionSelection()
+  }, [countries, filter])
 
   return (
     <div className='min-h-screen'>
@@ -30,12 +40,12 @@ export default function Home() {
             placeholder='Search for a country...'
           />
         </div>
-        <RegionFilter filter={filter} handleFilter={(region) => setFilter(region)} />
-        {!countries ?
+        <RegionFilter filter={filter} handleFilter={(region: string) => setFilter(region)} />
+        {!displayedCountries ?
           <h1>Loading...</h1>
           : <ReactList
-            length={countries.length}
-            itemRenderer={(index, key) => <CountryCard key={key} countryData={countries[index]} />}
+            length={displayedCountries.length}
+            itemRenderer={(index, key) => <CountryCard key={key} countryData={displayedCountries[index]} />}
           />
         }
       </div>
