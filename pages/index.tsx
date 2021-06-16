@@ -1,20 +1,22 @@
+import ReactList from 'react-list'
 import { CountryCard } from "../components/CountryCard";
 import { RegionFilter } from "../components/RegionFilter";
-import axios from "axios";
-import { useQuery } from "react-query";
-import ReactList from 'react-list'
 import { SearchIcon } from "@heroicons/react/outline";
 import { useDarkMode } from "../contexts/DarkModeContext";
-import { useCountries } from "../contexts/CountriesContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
+
+const getCountries = async () => {
+  const response = await axios.get('https://restcountries.eu/rest/v2/all?fields=name;region;capital;population;flag')
+  return response.data
+}
 
 export default function Home() {
   const { darkMode } = useDarkMode()
-  const { countries, fetchCountries } = useCountries()
+  const { data: countries, isError, isLoading } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
+  const [filter, setFilter] = useState('')
 
-  useEffect(() => {
-    fetchCountries()
-  }, [])
 
   return (
     <div className='min-h-screen'>
@@ -28,9 +30,10 @@ export default function Home() {
             placeholder='Search for a country...'
           />
         </div>
-        <RegionFilter />
-        {countries &&
-          <ReactList
+        <RegionFilter filter={filter} handleFilter={(region) => setFilter(region)} />
+        {!countries ?
+          <h1>Loading...</h1>
+          : <ReactList
             length={countries.length}
             itemRenderer={(index, key) => <CountryCard key={key} countryData={countries[index]} />}
           />
