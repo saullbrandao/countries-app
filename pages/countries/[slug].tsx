@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -9,7 +10,7 @@ import { useQuery } from 'react-query'
 const getCountryData = async (slug: string) => {
   const name = slug.split('-').join(' ')
 
-  const response = await axios.get(`https://restcountries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
+  const response = await axios.get(`https://restcoddduntries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
 
   const borderCountries = response.data[0].borders.join(';')
 
@@ -31,17 +32,17 @@ const getCountryData = async (slug: string) => {
 export default function CountryInfo() {
   const router = useRouter()
   const { slug } = Array.isArray(router.query) ? router.query[0] : router.query
-  const { data: countryData, isError, isFetched, refetch } = useQuery(['country', slug], () => getCountryData(slug), { refetchOnWindowFocus: false, enabled: false })
+  const { data: countryData, isError, isFetched, isLoading, refetch } = useQuery(['country', slug], () => getCountryData(slug), { refetchOnWindowFocus: false, enabled: false })
 
   useEffect(() => {
     slug && refetch()
   }, [slug])
 
   return (
-    <div className="min-h-screen mx-6">
-
+    <div className="min-h-screen mx-6 flex flex-col">
       <Link href='/'><a className='flex w-28 h-8 items-center justify-center gap-2 mb-8 bg-white dark:bg-dark-elements dark:text-white rounded-md shadow-lg' ><ArrowLeftIcon className='h-6' /> Back</a></Link>
-      {isFetched ?
+      {isError && <h1>Error</h1>}
+      {isFetched && !isError ?
         <div className="flex flex-col gap-6  dark:text-white rounded-md">
           <Image className='rounded-md' src={countryData.flag} width={600} height={400} objectFit='cover' />
           <div className='flex flex-col gap-1' >
@@ -67,7 +68,7 @@ export default function CountryInfo() {
             </div>
           </div>
         </div>
-        : <h1>Loading...</h1>
+        : isLoading && <LoadingSpinner />
       }
     </div>)
 }

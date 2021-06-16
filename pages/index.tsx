@@ -1,4 +1,5 @@
 import ReactList from 'react-list'
+import { LoadingSpinner } from '../components/LoadingSpinner';
 import { CountryCard } from "../components/CountryCard";
 import { RegionFilter } from "../components/RegionFilter";
 import { SearchIcon } from "@heroicons/react/outline";
@@ -14,7 +15,7 @@ const getCountries = async () => {
 
 export default function Home() {
   const { darkMode } = useDarkMode()
-  const { data: countries, isError } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
+  const { data: countries, isError, isLoading } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
   const [filter, setFilter] = useState('')
 
   const [displayedCountries, setDisplayedCountries] = useState([])
@@ -41,9 +42,12 @@ export default function Home() {
           />
         </div>
         <RegionFilter filter={filter} handleFilter={(region: string) => setFilter(region)} />
-        {!displayedCountries ?
-          <h1>Loading...</h1>
-          : <ReactList
+        {isError && <h1>Error</h1>}
+        {isLoading
+          ?
+          <LoadingSpinner />
+          :
+          <ReactList
             length={displayedCountries.length}
             itemRenderer={(index, key) => <CountryCard key={key} countryData={displayedCountries[index]} />}
           />
