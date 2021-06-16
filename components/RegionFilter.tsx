@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
@@ -6,11 +6,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export const RegionFilter = () => {
-  const [filter, setFilter] = useState('')
-
-  const handleFilter = region => setFilter(region)
-
+export const RegionFilter = ({ filter, handleFilter }) => {
   return (
     <Menu as="div" className="relative inline-block text-left text-light-text dark:">
       {({ open }) => (
@@ -53,12 +49,12 @@ export const RegionFilter = () => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => handleFilter('America')}
+                      onClick={() => handleFilter('Americas')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
                       )}
                     >
-                      America
+                      Americas
                     </button>
                   )}
                 </Menu.Item>
