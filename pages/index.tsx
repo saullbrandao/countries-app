@@ -20,12 +20,12 @@ export default function Home() {
 
   const [displayedCountries, setDisplayedCountries] = useState([])
 
-  const handleRegionSelection = () => {
-    const filteredCountries = filter ? countries.filter(country => country.region.toLowerCase() === filter.toLowerCase()) : countries
-    setDisplayedCountries(filteredCountries)
-  }
 
   useEffect(() => {
+    const handleRegionSelection = () => {
+      const filteredCountries = filter ? countries.filter(country => country.region.toLowerCase() === filter.toLowerCase()) : countries
+      setDisplayedCountries(filteredCountries)
+    }
     countries && handleRegionSelection()
   }, [countries, filter])
 

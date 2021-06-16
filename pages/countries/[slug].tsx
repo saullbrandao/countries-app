@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
 import { useQuery } from 'react-query'
@@ -10,7 +10,7 @@ import { useQuery } from 'react-query'
 const getCountryData = async (slug: string) => {
   const name = slug.split('-').join(' ')
 
-  const response = await axios.get(`https://restcoduntries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
+  const response = await axios.get(`https://restcountries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
 
   const borderCountries = response.data[0].borders.join(';')
 
@@ -36,7 +36,7 @@ export default function CountryInfo() {
 
   useEffect(() => {
     slug && refetch()
-  }, [slug])
+  }, [slug, refetch])
 
   return (
     <div className="min-h-screen mx-6 flex flex-col">
@@ -44,7 +44,7 @@ export default function CountryInfo() {
       {isError && <h1>Error</h1>}
       {isFetched && !isError ?
         <div className="flex flex-col gap-6  dark:text-white rounded-md">
-          <Image className='rounded-md' src={countryData.flag} width={600} height={400} objectFit='cover' />
+          <Image className='rounded-md' src={countryData.flag} width={600} height={400} objectFit='cover' alt={`${countryData.name}'s flag`} />
           <div className='flex flex-col gap-1' >
             <h2 className='font-bold text-2xl mb-2' >{countryData.name}</h2>
             <p><strong className='font-semibold'>Native Name:</strong> {countryData.nativeName}</p>

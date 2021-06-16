@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react"
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react"
 
 type DarkModeContextData = {
   darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
   toggleDarkMode: () => void;
   handleDarkMode: () => void;
-  handleThemePreference: () => void;
 }
 
 type DarkModeProviderProps = {
@@ -30,21 +30,13 @@ export const DarkModeContextProvider = ({ children }: DarkModeProviderProps) => 
     }
   }
 
-  function handleThemePreference() {
-    if (localStorage.darkMode === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setDarkMode(true)
-    } else {
-      setDarkMode(false)
-    }
-  }
-
   return (
     <DarkModeContext.Provider
       value={{
         darkMode,
+        setDarkMode,
         toggleDarkMode,
         handleDarkMode,
-        handleThemePreference
       }}
     >
       {children}
