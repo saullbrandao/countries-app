@@ -10,7 +10,7 @@ import { useQuery } from 'react-query'
 const getCountryData = async (slug: string) => {
   const name = slug.split('-').join(' ')
 
-  const response = await axios.get(`https://restcoddduntries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
+  const response = await axios.get(`https://restcoduntries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
 
   const borderCountries = response.data[0].borders.join(';')
 
