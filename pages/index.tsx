@@ -1,6 +1,5 @@
-import ReactList from 'react-list'
 import { LoadingSpinner } from '../components/LoadingSpinner';
-import { CountryCard } from "../components/CountryCard";
+import { CountriesList } from '../components/CountriesList';
 import { RegionFilter } from "../components/RegionFilter";
 import { SearchIcon } from "@heroicons/react/outline";
 import { useDarkMode } from "../contexts/DarkModeContext";
@@ -30,27 +29,26 @@ export default function Home() {
   }, [countries, filter])
 
   return (
-    <div className='min-h-screen'>
-      <div className="flex flex-col gap-8">
-        <div className="flex items-center mx-4 mb-4 h-14 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
-          <div className="h-full flex justify-center items-center">
-            <SearchIcon stroke={`${darkMode ? 'white' : 'black'}`} strokeOpacity='50' color='white' className='h-6' />
+    <div className='container mx-auto'>
+      <div className="flex flex-col gap-8 ">
+        <div className="flex flex-col mx-4 md:mx-0 md:flex-row md:justify-between">
+          <div className="flex items-center mb-4 h-14 md:w-2/5 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
+            <div className="h-full flex justify-center items-center">
+              <SearchIcon stroke={`${darkMode ? 'white' : 'black'}`} strokeOpacity='50' color='white' className='h-6' />
+            </div>
+            <input
+              className='mx-2 h-full text-light-input dark:text-white dark:bg-dark-elements outline-none'
+              placeholder='Search for a country...'
+            />
           </div>
-          <input
-            className='ml-4 pl-4 h-full text-light-input dark:text-white dark:bg-dark-elements outline-none'
-            placeholder='Search for a country...'
-          />
+          <RegionFilter filter={filter} handleFilter={(region: string) => setFilter(region)} />
         </div>
-        <RegionFilter filter={filter} handleFilter={(region: string) => setFilter(region)} />
         {isError && <h1>Error</h1>}
         {isLoading
           ?
           <LoadingSpinner />
           :
-          <ReactList
-            length={displayedCountries.length}
-            itemRenderer={(index, key) => <CountryCard key={key} countryData={displayedCountries[index]} />}
-          />
+          <CountriesList countries={displayedCountries} />
         }
       </div>
     </div>
