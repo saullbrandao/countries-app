@@ -32,10 +32,10 @@ export default function Home() {
     <div className='container mx-auto min-h-screen'>
       <div className="flex flex-col gap-8 ">
         <div className="flex flex-col mx-4 md:mx-0 md:flex-row md:justify-between">
-          <div className="flex items-center mb-4 h-14 md:w-2/5 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
-            <div className="h-full flex justify-center items-center">
-              <SearchIcon stroke={`${darkMode ? 'white' : 'black'}`} strokeOpacity='50' color='white' className='h-6' />
-            </div>
+          <div className="flex gap-2 items-center mb-4 h-14 md:w-2/5 shadow-md rounded-md p-4 dark:bg-dark-elements focus-within:ring-1 focus-within:ring-light-text dark:focus-within:ring-white">
+
+            <SearchIcon stroke={`${darkMode ? 'white' : 'black'}`} strokeOpacity='50' color='white' className='h-6' />
+
             <input
               className='mx-2 h-full text-light-input dark:text-white dark:bg-dark-elements outline-none'
               placeholder='Search for a country...'
