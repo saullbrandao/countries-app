@@ -18,13 +18,13 @@ export const DarkModeToggle = () => {
   })
 
   return (
-    <div className='flex justify-end gap-2 justify-self-end h-6'>
+    <div className='flex justify-end gap-2 h-6'>
       <MoonIcon
-        className='cursor-pointer'
+        className='cursor-pointer h-6'
         onClick={() => toggleDarkMode()}
         color={`${darkMode ? 'white' : 'black'}`}
       />
-      <span className='font-semibold text-center dark:text-white'>Dark Mode</span>
+      <span className='font-semibold text-center dark:text-white whitespace-nowrap'>Dark Mode</span>
     </div>
   )
 }
