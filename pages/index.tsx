@@ -37,7 +37,7 @@ export default function Home() {
             <SearchIcon stroke={`${darkMode ? 'white' : 'black'}`} strokeOpacity='50' color='white' className='h-6' />
 
             <input
-              className='mx-2 h-full text-light-input dark:text-white dark:bg-dark-elements outline-none'
+              className='mx-2 h-full w-full text-light-input dark:text-white dark:bg-dark-elements outline-none bg-light-background'
               placeholder='Search for a country...'
             />
           </div>
