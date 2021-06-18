@@ -12,7 +12,7 @@ export const RegionFilter = ({ filter, handleFilter }) => {
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className="inline-flex justify-between w-40 mx-4 rounded-md shadow-md p-4 bg-white dark:bg-dark-elements text-light-text dark:text-white hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-light-text">
+            <Menu.Button className="inline-flex justify-between w-44 rounded-md shadow-md p-4 bg-white dark:bg-dark-elements text-light-text dark:text-white hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-light-text">
               {filter || 'Filter by Region'}
               <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
             </Menu.Button>
