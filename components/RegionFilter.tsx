@@ -37,6 +37,18 @@ export const RegionFilter = ({ filter, handleFilter }) => {
                 <Menu.Item>
                   {({ active }) => (
                     <button
+                      onClick={() => handleFilter('')}
+                      className={classNames(
+                        'block px-4 py-2 text-sm'
+                      )}
+                    >
+                      All
+                    </button>
+                  )}
+                </Menu.Item>
+                <Menu.Item>
+                  {({ active }) => (
+                    <button
                       onClick={() => handleFilter('Africa')}
                       className={classNames(
                         'block px-4 py-2 text-sm'
