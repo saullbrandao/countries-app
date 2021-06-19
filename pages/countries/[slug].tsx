@@ -8,7 +8,7 @@ import { ArrowLeftIcon } from '@heroicons/react/outline'
 import { useQuery } from 'react-query'
 
 const getCountryData = async (slug: string) => {
-  const name = slug.split('-').join(' ')
+  const name = slug === 'Timor-Leste' ? slug : slug.split('-').join(' ')
 
   const response = await axios.get(`https://restcountries.eu/rest/v2/name/${name}?fullText=true&fields=name;nativeName;region;subregion;capital;population;topLevelDomain;currencies;languages;borders;alpha3Code;flag`)
 
