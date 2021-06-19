@@ -9,7 +9,7 @@ export const CountryCard = ({ countryData }) => {
         <Image className='rounded-md' src={countryData.flag} width={300} height={200} objectFit='cover' alt={`${countryData.flag}'s flag`} />
         <div className="pl-6 pt-6 mb-12">
           <h2 className='font-bold text-lg mb-2' >{countryData.name}</h2>
-          <p><strong className='font-semibold'>Population:</strong> {countryData.population}</p>
+          <p><strong className='font-semibold'>Population:</strong> {new Intl.NumberFormat('pt-BR').format(countryData.population)}</p>
           <p><strong className='font-semibold'>Region:</strong> {countryData.region}</p>
           <p><strong className='font-semibold'>Capital:</strong> {countryData.capital}</p>
         </div>
