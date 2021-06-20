@@ -16,12 +16,12 @@ export default function Home() {
   const [filter, setFilter] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredCountries, setFilteredCountries] = useState([])
-  const [displayedCountries, setDisplayedCountries] = useState([])
+  const [displayedCountries, setDisplayedCountries] = useState({})
 
   useEffect(() => {
     const handleCountrySearch = () => {
       const searchResult = filteredCountries.filter(country => country.name.toLowerCase().includes(searchTerm.toLowerCase()))
-      setDisplayedCountries(searchResult)
+      setDisplayedCountries(handlePagination(searchResult))
     }
 
     handleCountrySearch()
@@ -37,6 +37,21 @@ export default function Home() {
   }, [countries, filter])
 
 
+  const handlePagination = (countriesList) => {
+    if (countriesList.length < 20) return [countriesList]
+
+    const chunks = []
+    let i = 0
+    const length = countriesList.length;
+
+    while (i < length) {
+      chunks.push(countriesList.slice(i, i += 20));
+    }
+
+    return chunks;
+
+  }
+
   return (
     <div className='container mx-auto min-h-screen'>
       <div className="flex flex-col gap-8 ">
@@ -49,7 +64,7 @@ export default function Home() {
           ?
           <LoadingSpinner />
           :
-          <CountriesList countries={displayedCountries} />
+          <CountriesList countriesArr={displayedCountries} />
         }
       </div>
     </div>
