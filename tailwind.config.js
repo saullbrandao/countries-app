@@ -17,12 +17,13 @@ module.exports = {
           background: '#202c37',
           elements: '#2b3945'
         },
+      },
+      maxWidth: {
+        '12': '12rem'
       }
     },
 
   },
-  variants: {
-    extend: {},
-  },
+  variants: {},
   plugins: [],
 }

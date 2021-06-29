@@ -7,7 +7,7 @@ import axios from "axios";
 import { SearchInput } from '../components/SearchInput';
 
 const getCountries = async () => {
-  const response = await axios.get('https://restcountries.eu/rest/v2/all?fields=name;region;capital;population;flag')
+  const response = await axios.get('https://restcountries.eu/rest/v2/all?fields=name;region;capital;population;flag;alpha3Code')
   return response.data
 }
 

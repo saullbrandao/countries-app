@@ -37,7 +37,7 @@ export const CountriesList = ({ countriesArr }) => {
   return (
     <section className="flex flex-col justify-center gap-4 mb-8">
       <ul className='flex flex-wrap justify-around gap-4' >
-        {items.map((country, index) => <CountryCard key={index} countryData={country} />)}
+        {items?.map((country, index) => <CountryCard key={index} countryData={country} />)}
 
         {hasNextPage && <li ref={infiniteRef} className='w-full flex justify-center'>
           <LoadingSpinner />
