@@ -54,9 +54,10 @@
 
 ![countries-app](https://raw.githubusercontent.com/saullbrandao/countries-app/main/public/demo.png)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+* Use data from the REST Countries API to display information(population, languages, currencies, capital, border countries, etc.) about the countries 
+* You can filter by region and search by country name
+* There is a light and dark mode
+* Clicking on a card will open a new page which display more information about the country selected.
 
 ### Built With
 
@@ -65,7 +66,9 @@ Here's a blank template to get started:
 * [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss/)
 * [Typescript](https://github.com/microsoft/TypeScript)
 * [React-Query](https://github.com/tannerlinsley/react-query) 
-* [React Infinity Scroll Hook](https://github.com/onderonur/react-infinite-scroll-hook/) 
+* [React Infinity Scroll Hook](https://github.com/onderonur/react-infinite-scroll-hook/)
+* [REST Countries API](https://github.com/apilayer/restcountries) 
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
