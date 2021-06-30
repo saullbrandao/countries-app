@@ -116,7 +116,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Saull Brandão - [@twitter_handle](https://twitter.com/saullbrandao) - saull@outlook.com
+Saull Brandão - [@saullbrandao](https://twitter.com/saullbrandao) - saull@outlook.com
 
 Project Link: [https://github.com/saullbrandao/countries-app](https://github.com/saullbrandao/countries-app)
 
