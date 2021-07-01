@@ -1,8 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+type CountryCardProps = {
+  countryData: {
+    alpha3Code: string
+    capital: string
+    flag: string
+    name: string
+    population: number
+    region: string
+  }
+}
 
-export const CountryCard = ({ countryData }) => {
+export const CountryCard = ({ countryData }: CountryCardProps) => {
   return countryData && (
     <Link href={`/countries/${countryData.alpha3Code}`} passHref>
       <li className="flex flex-col bg-white dark:bg-dark-elements dark:text-white rounded-md w-60 cursor-pointer hover:transform hover:scale-105 hover:shadow-lg hover:border border-black border-opacity-20">

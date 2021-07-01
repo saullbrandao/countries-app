@@ -1,22 +1,31 @@
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { CountriesList } from '../components/CountriesList';
 import { RegionFilter } from "../components/RegionFilter";
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import axios from "axios";
 import { SearchInput } from '../components/SearchInput';
+import { useEffect, useState } from "react";
+import { useQuery, } from "react-query";
+import axios from "axios";
 
 const getCountries = async () => {
   const response = await axios.get('https://restcountries.eu/rest/v2/all?fields=name;region;capital;population;flag;alpha3Code')
   return response.data
 }
 
+type CountryData = {
+  alpha3Code: string
+  capital: string
+  flag: string
+  name: string
+  population: number
+  region: string
+}
+
 export default function Home() {
-  const { data: countries, isError, isLoading } = useQuery('countries', getCountries, { refetchOnWindowFocus: false })
-  const [filter, setFilter] = useState('')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [filteredCountries, setFilteredCountries] = useState([])
-  const [displayedCountries, setDisplayedCountries] = useState({})
+  const { data: countries, isError, isLoading } = useQuery<CountryData[], Error>('countries', getCountries, { refetchOnWindowFocus: false })
+  const [filter, setFilter] = useState<string>('')
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const [filteredCountries, setFilteredCountries] = useState<CountryData[]>([])
+  const [displayedCountries, setDisplayedCountries] = useState<Array<CountryData[]>>([])
 
   useEffect(() => {
     const handleCountrySearch = () => {
@@ -37,7 +46,7 @@ export default function Home() {
   }, [countries, filter])
 
 
-  const handlePagination = (countriesList) => {
+  const handlePagination = (countriesList: CountryData[]) => {
     if (countriesList.length < 20) return [countriesList]
 
     const chunks = []
@@ -49,9 +58,9 @@ export default function Home() {
     }
 
     return chunks;
-
   }
 
+  console.log(displayedCountries[0])
   return (
     <div className='container mx-auto min-h-screen'>
       <div className="flex flex-col gap-8 ">

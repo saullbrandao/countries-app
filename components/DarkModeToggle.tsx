@@ -24,7 +24,9 @@ export const DarkModeToggle = () => {
         onClick={() => toggleDarkMode()}
         color={`${darkMode ? 'white' : 'black'}`}
       />
-      <span className='font-semibold text-center dark:text-white whitespace-nowrap'>Dark Mode</span>
+      <span className='font-semibold text-center dark:text-white whitespace-nowrap'>
+        Dark Mode
+      </span>
     </div>
   )
 }
