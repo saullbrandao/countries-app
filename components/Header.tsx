@@ -1,4 +1,4 @@
-import { DarkModeToggle } from "./DarkModeToggle"
+import { DarkModeToggle } from "components/DarkModeToggle"
 
 export const Header = () => {
   return (

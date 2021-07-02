@@ -1,6 +1,6 @@
 import { SearchIcon } from "@heroicons/react/outline";
 import { Dispatch, SetStateAction } from "react";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import { useDarkMode } from "contexts/DarkModeContext";
 
 type SearchInputProps = {
   handleSearchTerm: Dispatch<SetStateAction<string>>

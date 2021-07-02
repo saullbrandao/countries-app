@@ -1,7 +1,7 @@
-import { LoadingSpinner } from '../components/LoadingSpinner';
-import { CountriesList } from '../components/CountriesList';
-import { RegionFilter } from "../components/RegionFilter";
-import { SearchInput } from '../components/SearchInput';
+import { LoadingSpinner } from 'components/LoadingSpinner';
+import { CountriesList } from 'components/CountriesList';
+import { RegionFilter } from "components/RegionFilter";
+import { SearchInput } from 'components/SearchInput';
 import { useEffect, useState } from "react";
 import { useQuery, } from "react-query";
 import axios from "axios";

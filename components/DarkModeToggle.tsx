@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { MoonIcon } from '@heroicons/react/solid'
-import { useDarkMode } from '../contexts/DarkModeContext'
+import { useDarkMode } from 'contexts/DarkModeContext'
 
 export const DarkModeToggle = () => {
   const { darkMode, toggleDarkMode, setDarkMode, handleDarkMode } = useDarkMode()

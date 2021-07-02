@@ -1,6 +1,6 @@
-import { Header } from '../components/Header'
+import { Header } from 'components/Header'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { DarkModeContextProvider } from '../contexts/DarkModeContext'
+import { DarkModeContextProvider } from 'contexts/DarkModeContext'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 
 import '../styles/globals.css'

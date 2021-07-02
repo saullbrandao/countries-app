@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useInfiniteScroll from "react-infinite-scroll-hook";
-import { CountryCard } from "./CountryCard"
-import { LoadingSpinner } from "./LoadingSpinner";
+import { CountryCard } from "components/CountryCard"
+import { LoadingSpinner } from "components/LoadingSpinner";
 
 type CountryData = {
   alpha3Code: string

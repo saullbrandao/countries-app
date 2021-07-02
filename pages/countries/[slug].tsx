@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, GetStaticPropsResult, InferGetStaticPropsType, NextPageContext } from 'next'
 import axios from 'axios'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
+import { LoadingSpinner } from 'components/LoadingSpinner'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 type BorderCountry = {
