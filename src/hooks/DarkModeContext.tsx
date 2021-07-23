@@ -1,19 +1,28 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react"
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react'
 
 type DarkModeContextData = {
-  darkMode: boolean;
-  setDarkMode: Dispatch<SetStateAction<boolean>>;
-  toggleDarkMode: () => void;
-  handleDarkMode: () => void;
+  darkMode: boolean
+  setDarkMode: Dispatch<SetStateAction<boolean>>
+  toggleDarkMode: () => void
+  handleDarkMode: () => void
 }
 
 type DarkModeProviderProps = {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export const DarkModeContext = createContext({} as DarkModeContextData)
+const DarkModeContext = createContext({} as DarkModeContextData)
 
-export const DarkModeContextProvider = ({ children }: DarkModeProviderProps) => {
+export const DarkModeContextProvider = ({
+  children,
+}: DarkModeProviderProps) => {
   const [darkMode, setDarkMode] = useState(false)
 
   function toggleDarkMode() {
