@@ -40,7 +40,8 @@
 
 # :page_with_curl: About the Project
 
-![countries-app](https://raw.githubusercontent.com/saullbrandao/countries-app/main/public/demo.png)
+![countries-app](https://raw.githubusercontent.com/saullbrandao/countries-app/main/demo-light.png)
+![countries-app](https://raw.githubusercontent.com/saullbrandao/countries-app/main/demo-dark.png)
 
 - Use data from the REST Countries API to display information(population,
   languages, currencies, capital, border countries, etc.) about the countries
